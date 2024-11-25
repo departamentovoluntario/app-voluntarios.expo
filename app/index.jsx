@@ -1,21 +1,28 @@
 import { Link, router } from "expo-router";
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, View, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import TextInput from "../components/Inputs/InputText";
 import SimpleButton from "../components/Buttoms/SimpleButton";
 // import { Image } from 'expo-image';
+import { useSession } from '../utils/ctx'
 
 function index() {
+  const { signIn, session } = useSession()
   const onLogin = () => {
-    console.log("login");
-    router.replace("/home");
+    console.log('login enter')
+    signIn('test')
   };
 
   const onRegister = () => {
     console.log("register");
     router.replace("/register");
   }
+
+  useEffect(()=>{
+    console.log(session)
+    if (session) router.push('/home')
+  }, [session])
   return (
     <SafeAreaView>
       <View style={{}}>

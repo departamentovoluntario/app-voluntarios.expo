@@ -1,5 +1,6 @@
 import { Link } from 'expo-router';
 import { View, Text, StyleSheet } from 'react-native';
+import { SessionProvider } from '../../../utils/ctx'
 
 export default function Tab() {
   return (
